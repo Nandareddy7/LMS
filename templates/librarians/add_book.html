@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Add a New Book{% endblock title %}
+{% block navbar %}{% include 'librarians/navbar.html' %}{% endblock navbar %}
+{% block body %}
+<div class="container">
+    <h1 class="text-center my-2">Add a New Book</h1>
+    <form method="POST" class="m-auto w-50"> {% csrf_token %}
+        <div class="form-outline mb-4">
+            <input type="text" id="name" name="name" class="form-control" />
+            <label class="form-label" for="name">Book Name</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text" id="author" class="form-control" name="author" />
+            <label class="form-label" for="author">Author</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="number" id="isbn" class="form-control" name="isbn" />
+            <label class="form-label" for="isbn">ISBN Number</label>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text" id="category" class="form-control" name="category" />
+            <label class="form-label" for="category">Category</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">Add Book</button>
+    </form>
+</div>
+{% endblock body %}

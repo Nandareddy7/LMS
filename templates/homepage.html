@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Library Management System{% endblock title %}
+{% block css %}
+<style>
+    /* Default height for small devices */
+    #intro-example {
+        height: 90vh;
+    }
+
+    /* Height for devices larger than 992px */
+    @media (min-width: 992px) {
+        #intro-example {
+            min-height: 90vh;
+        }
+    }
+</style>
+{% endblock css %}
+
+{% block navbar %}{% include 'navbar.html' %}{% endblock navbar %}
+
+{% block body %}
+<header>
+    <!-- Background image -->
+    <div id="intro-example" class="p-5 text-center bg-image"
+      style="background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');">
+      <div class="mask" style="background-color: rgba(0, 0, 0, 0.7);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+          <div class="text-white">
+            <h1 class="mb-3">Library Management System</h1>
+            <h5 class="mb-4">
+              Nothing is pleasanter than exploring a library.
+            </h5>
+            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'librarian_login' %}" role="button" rel="nofollow">Librarian
+              Login</a>
+            <a class="btn btn-outline-light btn-lg m-2" href="{% url 'student_login' %}" role="button">Student Login</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Background image -->
+  </header>
+{% endblock body %}

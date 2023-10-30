@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Issue book{% endblock title %}
+{% block navbar %}{% include 'librarians/navbar.html' %}{% endblock navbar %}
+{% block body %}
+<div class="container">
+    <h1 class="text-center my-2">Issue Book</h1>
+    <form method="post" class="m-auto w-50">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                <p class="alert alert-danger">{{ message }}</p>
+                {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %} 
+                <p class="alert alert-success">{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <label class="form-label">Select Student</label>
+        <select class="form-control select2 mb-4" name="student" aria-label="Default select example" data-live-search="true">
+            <option value="">Select Student</option>
+            {% for student in students %}
+                <option value="{{student.roll_number}}">
+                    {{ student.name}}[{{student.roll_number}}]
+                </option>
+            {% endfor %}
+        </select>
+        <label class="form-label mt-4">Select Book</label>
+        <select class="form-control select2" name="book" aria-label="Default select example" data-live-search="true">
+            <option value="">Select Book</option>
+            {% for book in books %}
+                <option value="{{book.isbn}}">
+                    {{ book.name}}[{{book.isbn}}]
+                </option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary btn-block mt-2">Issue Book</button>
+    </form>
+</div>
+{% endblock body %}

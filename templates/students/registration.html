@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Student Registration - Library Management System {% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block navbar %}{% include 'navbar.html' %}{% endblock navbar %}
+
+{% block body %}
+
+<div class="container mt-3">
+  <form method="POST" enctype="multipart/form-data" class="mx-auto w-50">
+    {% csrf_token %}
+    <h1 class="text-center"><u>Student Registration</u></h1>
+    {% if messages %}
+      {% for message in messages %}
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+          <p class="alert alert-danger">{{ message }}</p>
+          {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %} 
+          <p class="alert alert-success">{{ message }}</p>
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline mb-2">
+          <input type="text" id="username" name="username" class="form-control" />
+          <label class="form-label" for="username">Username</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" name="name" id="name" class="form-control" />
+          <label class="form-label" for="name">Full name</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" name="roll_no" id="roll_no" class="form-control" />
+          <label class="form-label" for="roll_no">Roll Number</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" name="branch" id="branch" class="form-control" />
+          <label class="form-label" for="branch">Branch name</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+          <input type="email" name="email" id="email" class="form-control" />
+          <label class="form-label" for="email">Email</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="text" name="mobile" id="mobile" class="form-control" />
+          <label class="form-label" for="mobile">Mobile Number</label>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="input-group">
+        <input type="file" class="form-control" name="profile"/>
+        <span class="input-group-text">Profile Image</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col">
+        <div class="form-outline">
+          <input type="password" name="password" id="password" class="form-control" />
+          <label class="form-label" for="password">Password</label>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-outline">
+          <input type="password" name="confirm_password" id="confirm_password" class="form-control" />
+          <label class="form-label" for="confirm_password">Confirm Password</label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block mb-4">Register As Student</button>
+</div>
+</form>
+{% endblock %}
+{% block js %}
+<script>
+  {% if alert %}
+  alert("Registration Successfull.")
+  document.location = "/student_login"
+  {% endif %}
+</script>
+{% endblock %}

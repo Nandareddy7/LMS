@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block title %}All Books{% endblock title %}
+{% block navbar %}{% include 'librarians/navbar.html' %}{% endblock navbar %}
+{% block body %}
+<div class="container mt-4">
+<h1 class="text-center"><u>Issued Books</u></h1>
+  <table class="table table-hover" id="example">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Name</th>
+        <th>Roll Number</th>
+        <th>Branch</th>
+        <th>Mobile</th>
+        <th>Email</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}
+      <tr>
+        <td>{{forloop.counter}}.</td>
+        <td>{{student.name}}</td>
+        <td>{{student.roll_number}}</td>
+        <td>{{student.branch}}</td>
+        <td>{{student.mobile}}</td>
+        <td>{{student.email}}</td>
+        <td>
+          <a href="{% url 'delete_student' student.user_id %}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock body %}

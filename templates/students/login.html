@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Student Login - Library Management System {% endblock %}
+{% block css %}
+{% endblock %}
+{% block navbar %}{% include 'navbar.html' %}{% endblock navbar %}
+{% block body %}
+<div class="container">
+    <h1 class="text-center my-2">Student Login</h1>
+    <form method="POST" class="m-auto w-50"> {% csrf_token %}
+        <div class="form-outline mb-4">
+            <input type="text" id="username" name="username" class="form-control" />
+            <label class="form-label" for="username">Username</label>
+        </div>
+
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+            <input type="password" id="password" class="form-control" name="password" />
+            <label class="form-label" for="password">Password</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+    </form>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Invalid Username or Password.")
+    document.location = "/student_login"
+    {% endif %}
+</script>
+{% endblock %}
